@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saket Kukatkar | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-light: #fdfdfd;
+      --bg-dark: #1a1a2e;
+      --text-light: #222;
+      --text-dark: #e0e0e0;
+      --primary: #1e90ff;
+      --secondary: #f2f2f2;
+      --accent: #0077cc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.4s, color 0.4s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    nav {
+      background: #10101a;
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e1e2f, var(--primary));
+      color: white;
+      padding: 4rem 2rem;
+    }
+
+    .hero-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .hero-image img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #ddd;
+    }
+
+    .resume-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .resume-button:hover {
+      background-color: var(--accent);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 4rem 2rem;
+      flex: 1;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    section p, section li {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: inherit;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .dark-mode .social-icons a {
+      background: #333;
+      color: var(--text-dark);
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+
+    footer {
+      background: #10101a;
+      color: white;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    section a.resume-button {
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    #github p {
+      margin-bottom: 1rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      padding: 1rem 2rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: var(--accent);
+    }
+
+    .skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .skills li {
+      background-color: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .skills ul {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body class="dark-mode">
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Saket's Portfolio</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#internships">Internships</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#leetcode">LeetCode</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="toggle-btn" onclick="toggleDarkMode()">
+      <i id="theme-icon" class="fas fa-sun"></i>
+    </button>
+  </nav>
+
+  <header>
+    <div class="hero-wrapper">
+      <div class="hero-image">
+        <img src="pic.png" alt="Your Photo">
+      </div>
+      <div class="hero-text">
+        <h1>Saket Kukatkar</h1>
+        <p>Student • Developer • AI Enthusiast</p>
+        <a href="resume.pdf" class="resume-button" download>Download Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <section id="about">
+      <h2><i class="fas fa-user"></i> About</h2>
+      <p><strong>College:</strong> The NorthCap University</p>
+      <p><strong>Course:</strong> B.Tech in Computer Science</p>
+      <p><strong>Branch:</strong> Artificial Intelligence & Machine Learning</p>
+      <p><strong>Year:</strong> 3rd Year</p>
+      <p><strong>Location:</strong> Gurugram, India</p>
+    </section>
+
+    <section id="github">
+      <h2><i class="fab fa-github"></i> GitHub</h2>
+      <p>A collection of my personal projects, experiments, and open-source contributions.
+        GitHub is where I bring ideas to life and grow through hands-on development.</p>
+      <a href="https://github.com/SaketKukatkar" class="resume-button" target="_blank">Visit GitHub</a>
+    </section>
+
+  <section id="projects">
+    <h2><i class="fas fa-laptop-code"></i> Projects</h2>
+    <ul id="project-list">
+      <li>Loading projects from GitHub...</li>
+    </ul>
+  </section>
+
+  <script>
+    const githubUsername = "SaketKukatkar";
+    const projectList = document.getElementById("project-list");
+
+    fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated`)
+      .then(response => response.json())
+      .then(repos => {
+        projectList.innerHTML = "";
+
+        repos.forEach(repo => {
+          if (!repo.fork) {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong><a href="${repo.html_url}" target="_blank" style="color: var(--primary); text-decoration: none;">${repo.name}</a></strong> – ${repo.description || 'No description provided'}`;
+            projectList.appendChild(li);
+          }
+        });
+
+        if (projectList.children.length === 0) {
+          projectList.innerHTML = "<li>No public repositories found.</li>";
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching GitHub repos:", error);
+        projectList.innerHTML = "<li>Failed to load projects. Please try again later.</li>";
+      });
+  </script>
+
+
+    <!-- INTERNSHIPS -->
+    <section id="internships">
+      <h2><i class="fas fa-briefcase"></i> Internships</h2>
+      <ul>
+        <li><strong>AI Intern - Cognifyz Technologies</strong> (June 2024 - July 2024)<br>
+          Created A Model For Suggestions Based On Restaurant Ratings</li>
+        <li><strong>Python Developer - Dew Solutions</strong> (July 2024 - Aug 2024)<br>
+          Created A Project Automating Cookie Clicker Website Using Selenium</li>
+      </ul>
+    </section>
+
+    <section id="certifications">
+      <h2><i class="fas fa-certificate"></i> Certifications</h2>
+      <ul>
+        <li><strong>Machine Learning</strong> – Coursera by Stanford University (Andrew Ng)</li>
+        <li><strong>Frontend Development</strong> – freeCodeCamp</li>
+        <li><strong>Problem Solving in Python</strong> – HackerRank</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2><i class="fas fa-tools"></i> Skills</h2>
+      <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>HTML & CSS</li>
+        <li>Selenium</li>
+        <li>Machine Learning</li>
+        <li>AI & NLP</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </section>
+
+    <section id="leetcode">
+      <h2><i class="fas fa-code"></i> LeetCode</h2>
+      <p>I regularly practice on LeetCode to enhance my coding skills and algorithmic thinking.</p>
+      <p>It's a great way to prepare for technical interviews and master core computer science concepts.</p>
+      <a href="https://leetcode.com/yourusername" class="resume-button" target="_blank">Visit LeetCode</a>
+    </section>
+
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Contact</h2>
+      <p>Email: saketkukatkar10@gmail.com</p>
+    </section>
+
+    <section id="message">
+      <h2><i class="fas fa-paper-plane"></i> Message Me Directly</h2>
+      <form class="contact-form" id="contact-form">
+        <input type="text" name="from_name" placeholder="Your Name" required />
+        <input type="email" name="from_email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function() {
+        emailjs.init("YOUR_PUBLIC_KEY");
+      })();
+
+      document.getElementById("contact-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+          .then(function() {
+            alert("Message sent successfully!");
+          }, function(error) {
+            alert("Failed to send message. Please try again.");
+            console.log(error);
+          });
+      });
+    </script>
+
+
+  <footer>
+    <div class="social-icons" style="justify-content: center; margin-bottom: 0.5rem;">
+      <a href="https://instagram.com/sakett.0" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/saket-kukatkar-8279872b1/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/SaketKukatkar" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    &copy; 2025 Saket Kukatkar. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById('theme-icon');
+
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+  </script>
+
+</body>
+</html>
